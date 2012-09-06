@@ -58,5 +58,8 @@ module Marianita
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # TODO: replace with AR store?
+    config.middleware.use ActionDispatch::Session::CookieStore
   end
 end
