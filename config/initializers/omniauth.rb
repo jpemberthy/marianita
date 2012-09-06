@@ -2,5 +2,5 @@ OmniAuth.config.logger = Rails.logger
 
 # TODO: make credentials work based on the environment with fb-credentials.yml
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, '280550815379979', '615f73b629c5241d5708439b198bc5a7'
+  provider :facebook, '268529246596995', 'a8675694ee39e3fd6ba7285611725d69'
 end
