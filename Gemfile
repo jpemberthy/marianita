@@ -4,6 +4,6 @@ gem 'rails', '3.2.8'
 gem 'rails-api'
 gem 'sqlite3'
 
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'debugger'
