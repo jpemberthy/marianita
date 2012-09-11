@@ -1,6 +1,14 @@
 class User < ActiveRecord::Base
   has_many :tokens
 
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(self.facebook_token)
+  end
+
+  def facebook_token
+    tokens.facebook.last.token
+  end
+
   def self.from_fb(fb)
     user = where(facebook_id: fb.uid).first_or_initialize.tap do |user|
       user.email = fb.info.email

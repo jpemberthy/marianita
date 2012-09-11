@@ -4,6 +4,12 @@ gem 'rails', '3.2.8'
 gem 'rails-api'
 gem 'sqlite3'
 
+# Facebook
 gem 'omniauth-facebook', '1.4.0'
+gem 'koala'
 
-gem 'debugger'
+group :development, :test do
+  gem 'debugger'
+  gem 'hirb'
+  gem 'wirble'
+end
