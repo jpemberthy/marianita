@@ -14,7 +14,7 @@ group :production do
 end
 
 group :development do
-  gem 'heroku'
+  gem 'heroku'  # TODO: created it from scratch. Production is using 1.9.2 - REPLACE!
 end
 
 group :development, :test do
