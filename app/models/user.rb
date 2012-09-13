@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :tokens
+  has_many :feeds
 
   def facebook
     @facebook ||= Koala::Facebook::API.new(self.facebook_token)
