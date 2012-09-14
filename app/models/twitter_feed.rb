@@ -24,7 +24,8 @@ class TwitterFeed
   end
 
   def update_from_twitter(twitter_feed)
-    twitter_feed.delete("id")
+    twitter_feed.delete(:id)
+    twitter_feed.delete(:id_str)
     update_attributes(twitter_feed)
   end
 end
