@@ -37,6 +37,17 @@ class User < ActiveRecord::Base
   end
 
   # Wrap in a twitter module?
+  def twitter
+    @twitter ||= Twitter::Client.new(twitter_token)
+  end
+
+  def twitter_token
+    t = tokens.twitter.last
+    { oauth_token: t.token, oauth_token_secret: t.oauth_token_secret }
+  end
+
+  # u.twitter.user_timeline(trim_user: true, include_entities: true)
+  # getting the timeline.
   def self.from_twitter(twitter)
     # TODO: replace to support link twitter account if already logged in with FB.
     user = where(twitter_id: twitter.uid).first_or_initialize.tap do |user|
