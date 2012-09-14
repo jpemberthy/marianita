@@ -1,0 +1,7 @@
+development:
+  consumer_key: 'ePlCre6Ki1sIfbyDlkdQ'
+  secret: 'xSOHRLOOGzVHzcIRjt92vRqpchAoV8vOeiW1O0PAPa4'
+
+production:
+  consumer_key: 'qMi2akRaKvELLF16Hjww'
+  secret: 'n2CgvjnzxCZfo6iZ4JIC1RfOWkoJKZWKbFjKnfjCqAE'

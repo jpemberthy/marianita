@@ -1,4 +1,9 @@
 Twitter.configure do |config|
-  config.consumer_key       = "ePlCre6Ki1sIfbyDlkdQ"
-  config.consumer_secret    = "xSOHRLOOGzVHzcIRjt92vRqpchAoV8vOeiW1O0PAPa4"
+  # same code in omniauth.rb
+  # TODO: a Site class containing all the site credentials?
+  twitter_credentials_path = File.join(Rails.root, %w[config twitter.yml])
+  twitter_credentials = YAML.load_file(twitter_credentials_path)[Rails.env]
+
+  config.consumer_key       = twitter_credentials["consumer_key"]
+  config.consumer_secret    = twitter_credentials["secret"]
 end
