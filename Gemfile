@@ -21,7 +21,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'sqlite3'     # TODO: replace with PG once we start quering weird stuff.
+  gem 'sqlite3'
   gem 'debugger'
   gem 'hirb'
   gem 'wirble'
