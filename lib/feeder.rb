@@ -8,4 +8,11 @@ module Feeder
     end
   end
 
+  def self.create_twitter_feeds
+    User.where("twitter_id IS NOT NULL").find_each do |user|
+      feeds = user.twitter.user_timeline(trim_user: true, include_entities: true)
+      feeds.each { |feed| TwitterFeed.create_from_twitter(user.id, feed.attrs) }
+    end
+  end
+
 end

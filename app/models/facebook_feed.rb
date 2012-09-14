@@ -1,3 +1,6 @@
+# TODO: replace with a has_feed helper to reuse
+# create_from_facebook
+# update_from_facebook
 class FacebookFeed
   include Mongoid::Document
   field :user_id, type: Integer

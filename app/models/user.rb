@@ -46,8 +46,6 @@ class User < ActiveRecord::Base
     { oauth_token: t.token, oauth_token_secret: t.oauth_token_secret }
   end
 
-  # u.twitter.user_timeline(trim_user: true, include_entities: true)
-  # getting the timeline.
   def self.from_twitter(twitter)
     # TODO: replace to support link twitter account if already logged in with FB.
     user = where(twitter_id: twitter.uid).first_or_initialize.tap do |user|
