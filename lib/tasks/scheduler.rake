@@ -1,6 +1,6 @@
 namespace :facebook do
   desc "creates or updates users facebook feeds"
   task :create_feeds => [:environment] do
-    Facebook.create_feeds
+    Feeder.create_facebook_feeds
   end
 end
