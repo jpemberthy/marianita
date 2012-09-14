@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913221128) do
+ActiveRecord::Schema.define(:version => 20120914180456) do
 
   create_table "feeds", :force => true do |t|
     t.integer  "user_id"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(:version => 20120913221128) do
     t.string   "token"
     t.datetime "expires_at"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "oauth_token_secret"
   end
 
   add_index "tokens", ["user_id"], :name => "index_tokens_on_user_id"
@@ -39,8 +40,10 @@ ActiveRecord::Schema.define(:version => 20120913221128) do
     t.string   "facebook_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "twitter_id"
   end
 
   add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
+  add_index "users", ["twitter_id"], :name => "index_users_on_twitter_id"
 
 end

@@ -11,6 +11,10 @@ gem 'mongoid', '~> 3.0.2'
 gem 'omniauth-facebook', '1.4.0'
 gem 'koala'
 
+# Twitter
+gem 'omniauth-twitter'
+gem 'twitter'
+
 group :production do
   gem 'pg'
   gem 'thin'

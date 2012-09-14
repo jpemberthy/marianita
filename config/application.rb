@@ -27,6 +27,7 @@ module Marianita
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     # TODO: replace with AR store?
+    config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
 
     # AR should take precedence over mongoid.
