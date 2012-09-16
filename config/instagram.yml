@@ -1,0 +1,4 @@
+development:
+  client_id: "116925944aef40758cede9ee1886484c"
+  clent_secret: "44bc3bc5078e435a9105197f36be31ee"
+  callback_url: "http://local.marianita.com:3000/auth/instagram/callback"

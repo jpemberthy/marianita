@@ -15,6 +15,9 @@ gem 'koala'
 gem 'omniauth-twitter'
 gem 'twitter'
 
+# Instagram
+gem 'instagram'
+
 group :production do
   gem 'pg'
   gem 'thin'

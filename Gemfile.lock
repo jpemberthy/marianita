@@ -45,6 +45,8 @@ GEM
     excon (0.16.2)
     faraday (0.8.4)
       multipart-post (~> 1.1)
+    faraday_middleware (0.8.8)
+      faraday (>= 0.7.4, < 0.9)
     hashie (1.2.0)
     heroku (2.31.2)
       heroku-api (~> 0.3.4)
@@ -58,6 +60,11 @@ GEM
     hirb (0.7.0)
     httpauth (0.1)
     i18n (0.6.1)
+    instagram (0.8.5)
+      faraday (>= 0.7, < 0.9)
+      faraday_middleware (~> 0.8)
+      hashie (>= 0.4.0)
+      multi_json (~> 1.0, >= 1.0.3)
     journey (1.0.4)
     json (1.7.5)
     jwt (0.1.5)
@@ -166,6 +173,7 @@ DEPENDENCIES
   debugger
   heroku
   hirb
+  instagram
   koala
   mongoid (~> 3.0.2)
   omniauth-facebook (= 1.4.0)
