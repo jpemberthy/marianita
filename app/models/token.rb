@@ -1,5 +1,8 @@
 class Token < ActiveRecord::Base
+  PROVIDERS = ['facebook', 'twitter', 'instagram']
   attr_accessible :expires_at, :provider, :token, :user_id
-  scope :facebook, where('provider = ?', 'facebook')
-  scope :twitter, where('provider = ?', 'twitter')
+
+  PROVIDERS.each do |provider|
+    scope provider, where(provider: provider)
+  end
 end
