@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :twitter_id, if: Proc.new { |u| u.twitter_id.present? }
   validates_uniqueness_of :email, if: Proc.new { |u| u.email.present? }
 
-  # Wrap in a Facebook module?
+  # TODO: Wrap in a Facebook module.
   def facebook
     @facebook ||= Koala::Facebook::API.new(self.facebook_token)
   end
@@ -15,9 +15,10 @@ class User < ActiveRecord::Base
     tokens.facebook.last.token
   end
 
-  def self.from_fb(fb)
-    # TODO: replace to support link fb account if already logged in with Twitter.
-    user = where(facebook_id: fb.uid).first_or_initialize.tap do |user|
+  def self.from_fb(fb, user=nil)
+    user ||= where(facebook_id: fb.uid).first_or_initialize
+
+    user.tap do |user|
       user.email = fb.info.email
       user.name = fb.info.name
       user.facebook_id = fb.uid
@@ -36,7 +37,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Wrap in a twitter module?
+  # TODO: Wrap in a Twitter module.
   def twitter
     @twitter ||= Twitter::Client.new(twitter_token)
   end
@@ -46,9 +47,10 @@ class User < ActiveRecord::Base
     { oauth_token: t.token, oauth_token_secret: t.oauth_token_secret }
   end
 
-  def self.from_twitter(twitter)
-    # TODO: replace to support link twitter account if already logged in with FB.
-    user = where(twitter_id: twitter.uid).first_or_initialize.tap do |user|
+  def self.from_twitter(twitter, user=nil)
+    user ||= where(twitter_id: twitter.uid).first_or_initialize
+
+    user.tap do |user|
       user.twitter_id = twitter.uid
       user.name = twitter.info.name
       user.save!

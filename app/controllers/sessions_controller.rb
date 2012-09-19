@@ -1,13 +1,13 @@
-# Maybe Session isn't a clear name here :P.
 class SessionsController < ApplicationController
-  # For now only FB.
+
   def create
     user = if params[:provider] == "facebook"
-      User.from_fb(env["omniauth.auth"])
+      User.from_fb(env["omniauth.auth"], current_user)
     elsif params[:provider] == "twitter"
-      User.from_twitter(env["omniauth.auth"])
+      User.from_twitter(env["omniauth.auth"], current_user)
     end
 
+    session[:user_id] = user.id
     render json: user
   end
 
