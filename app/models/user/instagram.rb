@@ -1,5 +1,9 @@
 module User::Instagram
   module InstanceMethods
+    def instagram
+      @instagram ||= Instagram.client(access_token: tokens.instagram.last.token)
+    end
+
     def link_instagram(instagram)
       client = Instagram.client(:access_token => instagram.access_token)
 

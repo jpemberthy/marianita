@@ -15,4 +15,10 @@ module Feeder
     end
   end
 
+  def self.create_instagram_feeds
+    User.where("instagram_id IS NOT NULL").find_each do |user|
+      feeds = user.instagram.user_recent_media
+      feeds.each { |feed| InstagramFeed.create_from_instagram(user.id, feed) }
+    end
+  end
 end

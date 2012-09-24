@@ -11,3 +11,10 @@ namespace :twitter do
     Feeder.create_twitter_feeds
   end
 end
+
+namespace :instagram do
+  desc "creates or updates user instagram feeds"
+  task :create_feeds => [:environment] do
+    Feeder.create_instagram_feeds
+  end
+end
