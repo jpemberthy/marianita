@@ -18,6 +18,8 @@ gem 'twitter'
 # Instagram
 gem 'instagram'
 
+gem 'exception_notification'
+
 group :production do
   gem 'pg'
   gem 'thin'

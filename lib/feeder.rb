@@ -8,7 +8,7 @@ module Feeder
         feeds = user.facebook.get_connections("me", "feed")
         feeds.each { |feed| FacebookFeed.create_from_service(user.id, feed) }
       rescue Exception => e
-        # TODO: SEND NOTIFICATION ERROR.
+        send_notification_error(e, { user_id: user.id, service: "facebook" })
       end
     end
   end
@@ -19,7 +19,7 @@ module Feeder
         feeds = user.twitter.user_timeline(trim_user: true, include_entities: true)
         feeds.each { |feed| TwitterFeed.create_from_service(user.id, feed.attrs) }
       rescue Exception => e
-        # TODO: SEND NOTIFICATION ERROR.
+        send_notification_error(e, { user_id: user.id, service: "twitter" })
       end
     end
   end
@@ -30,9 +30,13 @@ module Feeder
         feeds = user.instagram.user_recent_media
         feeds.each { |feed| InstagramFeed.create_from_service(user.id, feed) }
       rescue Exception => e
-        # TODO: SEND NOTIFICATION ERROR.
+        send_notification_error(e, { user_id: user.id, service: "instagram" })
       end
     end
+  end
+
+  def self.send_notification_error(exception, data)
+    ExceptionNotifier::Notifier.exception_notification("FEEDER ERROR", exception, data: data).deliver
   end
 
 end
