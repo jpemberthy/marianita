@@ -75,4 +75,9 @@ Marianita::Application.configure do
     :password             => 'u5urvmRyaY4H',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
+
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[la cagaste] ",
+    :sender_address => %{"noreply" <info@bolsaenred.com>},
+    :exception_recipients => %w{jpemberthy@gmail.com sarcilav@gmail.com}
 end
