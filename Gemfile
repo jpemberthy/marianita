@@ -34,4 +34,5 @@ group :development, :test do
   gem 'debugger'
   gem 'hirb'
   gem 'wirble'
+  gem 'rspec-rails'
 end
