@@ -46,6 +46,11 @@ GEM
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
     excon (0.16.2)
+    factory_girl (4.1.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.1.0)
+      factory_girl (~> 4.1.0)
+      railties (>= 3.0.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
     faraday_middleware (0.8.8)
@@ -188,6 +193,7 @@ PLATFORMS
 DEPENDENCIES
   debugger
   exception_notification
+  factory_girl_rails
   heroku
   hirb
   instagram
