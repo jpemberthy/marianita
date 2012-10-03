@@ -11,7 +11,7 @@ class FacebookFeed
   def comments_count
     self["comments"]["count"] rescue 0
   end
-
+  
   private
 
   def calculate_karma
