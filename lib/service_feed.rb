@@ -9,10 +9,13 @@ module ServiceFeed
       service_feed_id_name = "#{opts[:service_name]}_id"
 
       field :user_id, type: Integer
+      field :karma, type: Integer
       field "#{service_feed_id_name}", type: String
 
       validates_presence_of :user_id, "#{service_feed_id_name}"
       validates_uniqueness_of "#{service_feed_id_name}"
+
+      scope :popular, order_by("karma DESC")
 
       define_singleton_method("create_from_service") do |user_id, service_feed|
         service_feed.symbolize_keys!
@@ -29,7 +32,6 @@ module ServiceFeed
 
       send :include, InstanceMethods
     end
-
   end
 
   module InstanceMethods

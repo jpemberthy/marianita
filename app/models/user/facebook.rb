@@ -17,6 +17,11 @@ module User::Facebook
         token.save!
       end
     end
+
+    def facebook_feeds
+      FacebookFeed.where(user_id: self.id)
+    end
+
   end
 
   module ClassMethods
