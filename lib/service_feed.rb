@@ -15,7 +15,7 @@ module ServiceFeed
       validates_presence_of :user_id, "#{service_feed_id_name}"
       validates_uniqueness_of "#{service_feed_id_name}"
 
-      scope :popular, order_by("karma DESC")
+      scope :popular, where(:karma.gt => 0).order_by("karma DESC")
 
       define_singleton_method("create_from_service") do |user_id, service_feed|
         service_feed.symbolize_keys!
