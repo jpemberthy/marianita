@@ -36,6 +36,7 @@ module Feeder
   end
 
   def self.send_notification_error(exception, data)
+    Rails.logger.error("FEED ERROR: #{data}")
     ExceptionNotifier::Notifier.exception_notification("FEEDER ERROR", exception, data: data).deliver
   end
 

@@ -19,6 +19,9 @@ module User::Twitter
       end
     end
 
+    def twitter_feeds
+      TwitterFeed.where(user_id: self.id)
+    end
   end
 
   module ClassMethods
