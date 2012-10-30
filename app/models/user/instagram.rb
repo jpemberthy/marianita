@@ -22,6 +22,10 @@ module User::Instagram
         token.save!
       end
     end
+
+    def instagram_feeds
+      InstagramFeed.where(user_id: self.id)
+    end
   end
 
   module ClassMethods
