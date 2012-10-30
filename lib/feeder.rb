@@ -13,6 +13,23 @@ module Feeder
     end
   end
 
+  def self.create_all_time_facebook_feeds
+    User.where("facebook_id IS NOT NULL").find_each do |user|
+      begin
+        feeds = user.facebook.get_connections("me", "feed")
+        feeds.each { |feed| FacebookFeed.create_from_service(user.id, feed) }
+
+        while feeds = feeds.next_page
+          puts feeds.next_page_params
+          feeds.each { |feed| FacebookFeed.create_from_service(user.id, feed) }
+        end
+
+      rescue Exception => e
+        send_notification_error(e, { user_id: user.id, service: "facebook" })
+      end
+    end
+  end
+
   def self.create_twitter_feeds
     User.where("twitter_id IS NOT NULL").find_each do |user|
       begin
