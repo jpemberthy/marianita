@@ -11,7 +11,12 @@ class FacebookFeed
   def comments_count
     self["comments"]["count"] rescue 0
   end
-  
+
+  # TODO: TEST ME!!!
+  def self.timeline
+    where(:karma.gt => popular_karma_avg).order_by("created_time ASC")
+  end
+
   private
 
   def calculate_karma

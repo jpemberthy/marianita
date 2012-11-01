@@ -30,6 +30,10 @@ module ServiceFeed
         end
       end
 
+      define_singleton_method("popular_karma_avg") do
+        popular.avg(:karma)
+      end
+
       send :include, InstanceMethods
     end
   end
