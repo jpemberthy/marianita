@@ -13,6 +13,8 @@ class FacebookFeed
   end
 
   # TODO: TEST ME!!!
+  # FacebookFeed.all.map(&:type).uniq
+  # => ["status", "photo", "link", "video", "checkin", "swf", "question"]
   def self.timeline
     where(:karma.gt => popular_karma_avg).order_by("created_time ASC")
   end
