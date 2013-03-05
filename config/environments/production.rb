@@ -76,8 +76,8 @@ Marianita::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
-  config.middleware.use ExceptionNotifier,
-    :email_prefix => "[la cagaste] ",
-    :sender_address => %{"noreply" <info@bolsaenred.com>},
-    :exception_recipients => %w{jpemberthy@gmail.com sebastianarcila@gmail.com}
+  # config.middleware.use ExceptionNotifier,
+  #   :email_prefix => "[la cagaste] ",
+  #   :sender_address => %{"noreply" <info@bolsaenred.com>},
+  #   :exception_recipients => %w{}
 end
